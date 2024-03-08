@@ -208,7 +208,7 @@ uint16_t cmps12_read_mag_x_16_bit(int cmps12_file)
         return 0;
     }
 
-    mag_x_16_bit = (high_byte << 8) | low_byte;
+    mag_x_16_bit = (high_byte << 8) + low_byte;
 
     //sclaing factor of 0.001 per LSB
     float mag_x_gauss = mag_x_16_bit * 0.001;
@@ -233,7 +233,7 @@ uint16_t cmps12_read_mag_y_16_bit(int cmps12_file)
         return 0;
     }
 
-    mag_y_16_bit = (high_byte << 8) | low_byte;
+    mag_y_16_bit = (high_byte << 8) + low_byte;
 
     float mag_y_gauss = mag_y_16_bit * 0.001;
 
@@ -257,7 +257,7 @@ uint16_t cmps12_read_mag_z_16_bit(int cmps12_file)
         return 0;
     }
 
-    mag_z_16_bit = (high_byte << 8) | low_byte;
+    mag_z_16_bit = (high_byte << 8) + low_byte;
 
     float mag_z_gauss = mag_z_16_bit * 0.001;
 
@@ -266,8 +266,7 @@ uint16_t cmps12_read_mag_z_16_bit(int cmps12_file)
 
 float convert_to_ms2(uint16_t bit_raw)
 {
-    float acc_g = (float)bit_raw/1000.0;
-    float acc_ms2 = acc_g * G_TO_MS2;
+    float acc_ms2 = bit_raw * ACC_SCALE;
 
     return acc_ms2;
 }
@@ -290,7 +289,7 @@ uint16_t cmps12_read_accelerometer_x_16_bit(int cmps12_file)
         return 0;
     }
 
-    acc_x_16_bit = (high_byte << 8) | low_byte;
+    acc_x_16_bit = (high_byte << 8) + low_byte;
 
     //convert to m/s2
     float acc_x_ms2 = convert_to_ms2(acc_x_16_bit);
@@ -315,7 +314,7 @@ uint16_t cmps12_read_accelerometer_y_16_bit(int cmps12_file)
         return 0;
     }
 
-    acc_y_16_bit = (high_byte << 8) | low_byte;
+    acc_y_16_bit = (high_byte << 8) + low_byte;
 
     float acc_y_ms2 = convert_to_ms2(acc_y_16_bit);
 
@@ -339,7 +338,7 @@ uint16_t cmps12_read_accelerometer_z_16_bit(int cmps12_file)
         return 0;
     }
 
-    acc_z_16_bit = (high_byte << 8) | low_byte;
+    acc_z_16_bit = (high_byte << 8) + low_byte;
 
     float acc_z_ms2 = convert_to_ms2(acc_z_16_bit);
 
@@ -369,7 +368,7 @@ uint16_t cmps12_read_gyro_x_16_bit(int cmps12_file)
         return 0;
     }
 
-    gyro_x_16_bit = (high_byte << 8) | low_byte;
+    gyro_x_16_bit = (high_byte << 8) + low_byte;
 
     float gyro_x_dps = convert_to_degress_per_second(gyro_x_16_bit);
 
@@ -394,7 +393,7 @@ uint16_t cmps12_read_gyro_y_16_bit(int cmps12_file)
         return 0;
     }
 
-    gyro_y_16_bit = (high_byte << 8) | low_byte;
+    gyro_y_16_bit = (high_byte << 8) + low_byte;
 
     float gyro_y_dps = convert_to_degress_per_second(gyro_y_16_bit);
 
@@ -419,7 +418,7 @@ uint16_t cmps12_read_gyro_z_16_bit(int cmps12_file)
         return 0;
     }
 
-    gyro_z_16_bit = (high_byte << 8) | low_byte;
+    gyro_z_16_bit = (high_byte << 8) + low_byte;
 
     float gyro_z_dps = convert_to_degress_per_second(gyro_z_16_bit);
 

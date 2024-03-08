@@ -47,8 +47,8 @@
 
 #define I2C_SLAVE_FORCE 0x0706
 
-#define G_TO_MS2 9.8
-#define GYRO_LSB_PER_DPS 0.00875
+#define ACC_SCALE 1/100
+#define GYRO_LSB_PER_DPS 1/16
 #define TEMP_LSB_PER_DEGREE_C 1.0
 #define PITCH_LSB_PER_DEGREE_180 1.0
 

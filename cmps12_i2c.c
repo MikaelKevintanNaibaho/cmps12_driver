@@ -190,7 +190,7 @@ uint16_t cmps12_read_mag_x_16_bit(int cmps12_file)
         return 0;
     }
 
-    mag_x_16_bit = (high_byte << 8) + low_byte;
+    mag_x_16_bit = (high_byte << 8) | low_byte;
 
     return mag_x_16_bit;
 }
@@ -212,7 +212,7 @@ uint16_t cmps12_read_mag_y_16_bit(int cmps12_file)
         return 0;
     }
 
-    mag_y_16_bit = (high_byte << 8) + low_byte;
+    mag_y_16_bit = (high_byte << 8) | low_byte;
 
     return mag_y_16_bit;
 }
@@ -234,7 +234,7 @@ uint16_t cmps12_read_mag_z_16_bit(int cmps12_file)
         return 0;
     }
 
-    mag_z_16_bit = (high_byte << 8) + low_byte;
+    mag_z_16_bit = (high_byte << 8) | low_byte;
 
     return mag_z_16_bit;
 }
@@ -257,7 +257,7 @@ uint16_t cmps12_read_accelerometer_x_16_bit(int cmps12_file)
         return 0;
     }
 
-    acc_x_16_bit = (high_byte << 8) + low_byte;
+    acc_x_16_bit = (high_byte << 8) | low_byte;
 
     return acc_x_16_bit;
 }
@@ -279,7 +279,7 @@ uint16_t cmps12_read_accelerometer_y_16_bit(int cmps12_file)
         return 0;
     }
 
-    acc_y_16_bit = (high_byte << 8) + low_byte;
+    acc_y_16_bit = (high_byte << 8) | low_byte;
 
     return acc_y_16_bit;
 }
@@ -301,7 +301,7 @@ uint16_t cmps12_read_accelerometer_z_16_bit(int cmps12_file)
         return 0;
     }
 
-    acc_z_16_bit = (high_byte << 8) + low_byte;
+    acc_z_16_bit = (high_byte << 8) | low_byte;
 
     return acc_z_16_bit;
 }
@@ -323,7 +323,7 @@ uint16_t cmps12_read_gyro_x_16_bit(int cmps12_file)
         return 0;
     }
 
-    gyro_x_16_bit = (high_byte << 8) + low_byte;
+    gyro_x_16_bit = (high_byte << 8) | low_byte;
 
     return gyro_x_16_bit;
 }
@@ -345,7 +345,7 @@ uint16_t cmps12_read_gyro_y_16_bit(int cmps12_file)
         return 0;
     }
 
-    gyro_y_16_bit = (high_byte << 8) + low_byte;
+    gyro_y_16_bit = (high_byte << 8) | low_byte;
 
     return gyro_y_16_bit;
 }
@@ -367,7 +367,7 @@ uint16_t cmps12_read_gyro_z_16_bit(int cmps12_file)
         return 0;
     }
 
-    gyro_z_16_bit = (high_byte << 8) + low_byte;
+    gyro_z_16_bit = (high_byte << 8) | low_byte;
 
     return gyro_z_16_bit;
 }

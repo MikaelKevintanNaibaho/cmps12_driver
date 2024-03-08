@@ -266,7 +266,8 @@ uint16_t cmps12_read_mag_z_16_bit(int cmps12_file)
 
 float convert_to_ms2(uint16_t bit_raw)
 {
-    float acc_ms2 = bit_raw * ACC_SCALE;
+    float acc_g = (float)bit_raw/1000.0;
+    float acc_ms2 = acc_g * G_TO_MS2;
 
     return acc_ms2;
 }

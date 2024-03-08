@@ -1,7 +1,7 @@
 #ifndef CMPS12_I2C_H
 #define CMPS12_I2C_H
 
-
+#include <math.h>
 #include <stdio.h>
 #include <stdint.h>
 #include <unistd.h>

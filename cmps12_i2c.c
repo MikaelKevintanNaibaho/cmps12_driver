@@ -211,7 +211,7 @@ uint16_t cmps12_read_mag_x_16_bit(int cmps12_file)
     mag_x_16_bit = (high_byte << 8) | low_byte;
 
     //sclaing factor of 0.001 per LSB
-    float mag_x_gauss = mag_x_16_bit * 0.001;
+    float mag_x_gauss = mag_x_16_bit * 0.01;
 
     return (uint16_t)mag_x_gauss;
 }
@@ -235,7 +235,7 @@ uint16_t cmps12_read_mag_y_16_bit(int cmps12_file)
 
     mag_y_16_bit = (high_byte << 8) | low_byte;
 
-    float mag_y_gauss = mag_y_16_bit * 0.001;
+    float mag_y_gauss = mag_y_16_bit * 0.01;
 
     return (uint16_t)mag_y_gauss;
 }

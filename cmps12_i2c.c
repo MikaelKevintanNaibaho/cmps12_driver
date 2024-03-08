@@ -27,6 +27,8 @@ int cmps12_open_i2c_device(const char *device)
 int cmps12_release_i2c_device(int file)
 {
     close(file);
+
+    return 0;
 }
 
 
@@ -61,7 +63,7 @@ int cmps12_read_register(int file, uint8_t register_addr, uint8_t* data, size_t 
 int cmps12_write_register(int file, uint8_t register_addr, uint8_t data, size_t data_size)
 {
     //check file valid atau tidak
-    if (file < 0 || data == NULL || data_size == 0)
+    if (file < 0 || data_size == 0)
     {
         return -1;
     }
@@ -260,7 +262,7 @@ uint16_t cmps12_read_accelerometer_x_16_bit(int cmps12_file)
     return acc_x_16_bit;
 }
 
-uint16_t cmps12_read_accelerometer_x_16_bit(int cmps12_file)
+uint16_t cmps12_read_accelerometer_y_16_bit(int cmps12_file)
 {
     uint8_t high_byte, low_byte;
     uint16_t acc_y_16_bit;

@@ -47,6 +47,11 @@
 
 #define I2C_SLAVE_FORCE 0x0706
 
+#define G_TO_MS2 9.8
+#define GYRO_LSB_PER_DPS 0.00875
+#define TEMP_LSB_PER_DEGREE_C 1.0
+#define PITCH_LSB_PER_DEGREE_180 1.0
+
 typedef struct
 {
     uint16_t x;
@@ -96,6 +101,12 @@ uint16_t cmps12_temperature_16_bit(int cmps12_file);
 uint16_t cmps12_read_bearing_16_bit_BNO055(int cmps12_file);
 uint16_t cmps12_read_pitch_180_degress(int cmps12_file);
 
+//convert raw data to readable data
+float convert_to_ms2(uint16_t bit_raw);
+float convert_to_degress_per_second(uint16_t raw_data);
+float convert_to_celcius(uint16_t raw_data);
+
+
 //functions for combine xyz
 SensorData cmps12_read_magnetometer_data(int cmps12_file);
 SensorData cmps12_read_accelerometer_data(int cmps12_file);
@@ -104,6 +115,7 @@ SensorData cmps12_read_gyro_data(int cmps12_file);
 //orientation
 Orientation cmps12_read_orientation_quaternion(int cmps12_file);
 Orientation cmps12_read_orientation_BNO055(int cmps12_file);
+
 
 //All data
 AllSensorData cmps12_read_all_data(int cmps12_file);

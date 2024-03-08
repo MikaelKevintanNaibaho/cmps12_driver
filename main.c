@@ -32,7 +32,7 @@ int main(void){
         printf("Gyroscope: X=%u, Y=%u, Z=%u\n", all_data.gyro.x, all_data.gyro.y, all_data.gyro.z);
         printf("Orientation: Bearing=%u, Pitch=%u, Roll=%u\n", all_data.orientation.bearing, all_data.orientation.pitch, all_data.orientation.roll);
 
-        usleep(1000000); //delay 1 second
+        usleep(10000); //delay 1 second
 
     }
     

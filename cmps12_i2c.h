@@ -72,8 +72,8 @@ typedef struct
 
 
 //i2c related function
-int cmps12_write_register(int file, uint8_t register_addr, uint8_t data, size_t data_size);
-int cmps12_read_register(int file, uint8_t register_addr, uint8_t *data, size_t data_size);
+int cmps12_write_register(int file, uint8_t register_addr, uint8_t data, ssize_t data_size);
+int cmps12_read_register(int file, uint8_t register_addr, uint8_t *data, ssize_t data_size);
 int cmps12_open_i2c_device(const char *device);
 int cmps12_release_i2c_device(int file);
 int cmps12_init(const char *device);

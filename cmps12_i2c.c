@@ -32,7 +32,7 @@ int cmps12_release_i2c_device(int file)
 }
 
 
-int cmps12_read_register(int file, uint8_t register_addr, uint8_t* data, size_t data_size)
+int cmps12_read_register(int file, uint8_t register_addr, uint8_t* data, ssize_t data_size)
 {
     if (file < 0 || data == NULL || data_size == 0)
     {
@@ -60,7 +60,7 @@ int cmps12_read_register(int file, uint8_t register_addr, uint8_t* data, size_t 
     return 0;
 }
 
-int cmps12_write_register(int file, uint8_t register_addr, uint8_t data, size_t data_size)
+int cmps12_write_register(int file, uint8_t register_addr, uint8_t data, ssize_t data_size)
 {
     //check file valid atau tidak
     if (file < 0 || data_size == 0)

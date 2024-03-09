@@ -159,9 +159,18 @@ uint16_t cmps12_read_bearing_16_bit_quaternion(int cmps12_file)
     return (uint16_t)bearing_degrees;
 }
 
+int8_t map(uint8_t value) {
+    if (value <= 127) {
+        // Map 0-127 to -90 to 0
+        return -90 + (value * 90 / 127);
+    } else {
+        // Map 128-255 to 0-90
+        return (value - 128) * 90 / 127;
+    }
+}
 
 
-uint8_t cmps12_read_pitch_90_degress(int cmps12_file)
+int8_t cmps12_read_pitch_90_degress(int cmps12_file)
 {
     uint8_t pitch_90_degress;
 
@@ -169,11 +178,11 @@ uint8_t cmps12_read_pitch_90_degress(int cmps12_file)
         fprintf(stderr, "failed to read pitch 90 degress\n");
         return 0;
     }
-        
+
     return pitch_90_degress;
 }
 
-uint8_t cmps12_read_roll_90_degress(int cmps12_file)
+int8_t cmps12_read_roll_90_degress(int cmps12_file)
 {
     uint8_t roll_90_degress;
 

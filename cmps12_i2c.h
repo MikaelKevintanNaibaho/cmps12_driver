@@ -80,8 +80,9 @@ int cmps12_init(const char *device);
 
 //compass feature function
 uint8_t cmps12_read_bearing_8_bit(int cmps12_file);
-uint8_t cmps12_read_pitch_90_degress(int cmps12_file);
-uint8_t cmps12_read_roll_90_degress(int cmps12_file);
+int8_t map(uint8_t value);
+int8_t cmps12_read_pitch_90_degress(int cmps12_file);
+int8_t cmps12_read_roll_90_degress(int cmps12_file);
 uint8_t cmps12_read_calibration_state(int cmps12_file);
 uint16_t cmps12_read_bearing_16_bit_quaternion(int cmps12_file);
 uint16_t cmps12_read_mag_x_16_bit(int cmps12_file);

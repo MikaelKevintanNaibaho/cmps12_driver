@@ -210,10 +210,7 @@ uint16_t cmps12_read_mag_x_16_bit(int cmps12_file)
 
     mag_x_16_bit = (high_byte << 8) + low_byte;
 
-    //sclaing factor of 0.001 per LSB
-    float mag_x_gauss = mag_x_16_bit * 0.001;
-
-    return (uint16_t)mag_x_gauss;
+    return mag_x_16_bit;
 }
 
 uint16_t cmps12_read_mag_y_16_bit(int cmps12_file)
@@ -235,9 +232,8 @@ uint16_t cmps12_read_mag_y_16_bit(int cmps12_file)
 
     mag_y_16_bit = (high_byte << 8) + low_byte;
 
-    float mag_y_gauss = mag_y_16_bit * 0.001;
 
-    return (uint16_t)mag_y_gauss;
+    return mag_y_16_bit;
 }
 
 uint16_t cmps12_read_mag_z_16_bit(int cmps12_file)
@@ -259,18 +255,9 @@ uint16_t cmps12_read_mag_z_16_bit(int cmps12_file)
 
     mag_z_16_bit = (high_byte << 8) + low_byte;
 
-    float mag_z_gauss = mag_z_16_bit * 0.001;
-
-    return (uint16_t)mag_z_gauss;
+    return mag_z_16_bit;
 }
 
-float convert_to_ms2(uint16_t bit_raw)
-{
-    float acc_g = (float)bit_raw/1000.0;
-    float acc_ms2 = acc_g * G_TO_MS2;
-
-    return acc_ms2;
-}
 
 //read the accelerometer
 uint16_t cmps12_read_accelerometer_x_16_bit(int cmps12_file)
@@ -292,10 +279,8 @@ uint16_t cmps12_read_accelerometer_x_16_bit(int cmps12_file)
 
     acc_x_16_bit = (high_byte << 8) + low_byte;
 
-    //convert to m/s2
-    float acc_x_ms2 = convert_to_ms2(acc_x_16_bit);
 
-    return (uint16_t)acc_x_ms2;
+    return acc_x_16_bit;
 }
 
 uint16_t cmps12_read_accelerometer_y_16_bit(int cmps12_file)
@@ -317,9 +302,8 @@ uint16_t cmps12_read_accelerometer_y_16_bit(int cmps12_file)
 
     acc_y_16_bit = (high_byte << 8) + low_byte;
 
-    float acc_y_ms2 = convert_to_ms2(acc_y_16_bit);
 
-    return acc_y_ms2;
+    return acc_y_16_bit;
 }
 
 uint16_t cmps12_read_accelerometer_z_16_bit(int cmps12_file)
@@ -341,16 +325,9 @@ uint16_t cmps12_read_accelerometer_z_16_bit(int cmps12_file)
 
     acc_z_16_bit = (high_byte << 8) + low_byte;
 
-    float acc_z_ms2 = convert_to_ms2(acc_z_16_bit);
-
-    return acc_z_ms2;
+    return acc_z_16_bit;
 }
 
-float convert_to_degress_per_second(uint16_t raw_data)
-{
-    float gyro_dps = (float)raw_data * GYRO_LSB_PER_DPS;
-    return gyro_dps;
-}
 
 uint16_t cmps12_read_gyro_x_16_bit(int cmps12_file)
 {
@@ -371,10 +348,7 @@ uint16_t cmps12_read_gyro_x_16_bit(int cmps12_file)
 
     gyro_x_16_bit = (high_byte << 8) + low_byte;
 
-    float gyro_x_dps = convert_to_degress_per_second(gyro_x_16_bit);
-
-
-    return (uint16_t)gyro_x_dps;
+    return gyro_x_16_bit;
 }
 
 uint16_t cmps12_read_gyro_y_16_bit(int cmps12_file)
@@ -396,10 +370,8 @@ uint16_t cmps12_read_gyro_y_16_bit(int cmps12_file)
 
     gyro_y_16_bit = (high_byte << 8) + low_byte;
 
-    float gyro_y_dps = convert_to_degress_per_second(gyro_y_16_bit);
 
-
-    return (uint16_t)gyro_y_dps;
+    return gyro_y_16_bit;
 }
 
 uint16_t cmps12_read_gyro_z_16_bit(int cmps12_file)
@@ -421,17 +393,11 @@ uint16_t cmps12_read_gyro_z_16_bit(int cmps12_file)
 
     gyro_z_16_bit = (high_byte << 8) + low_byte;
 
-    float gyro_z_dps = convert_to_degress_per_second(gyro_z_16_bit);
 
-
-    return (uint16_t)gyro_z_dps;
+    return gyro_z_16_bit;
 }
 
-float convert_to_celcius(uint16_t raw_data)
-{
-    float temperature_celcius = (float)raw_data * TEMP_LSB_PER_DEGREE_C;
-    return temperature_celcius;
-}
+
 
 uint16_t cmps12_temperature_16_bit(int cmps12_file)
 {
@@ -452,9 +418,7 @@ uint16_t cmps12_temperature_16_bit(int cmps12_file)
 
     temp_16_bit = (high_byte << 8) | low_byte;
 
-    float temperature_celcius = convert_to_celcius(temp_16_bit);
-
-    return (uint16_t)temperature_celcius;
+    return temp_16_bit;
 }
 
 //read bearing dari BNO055
@@ -482,11 +446,7 @@ uint16_t cmps12_read_bearing_16_bit_BNO055(int cmps12_file)
     return bearing_16_bit / 16;
 }
 
-float convert_to_180(uint16_t raw_data)
-{
-    float pitch_to_degress = (float)(int16_t)raw_data * PITCH_LSB_PER_DEGREE_180;
-    return pitch_to_degress;
-}
+
 
 //read pitch 180 degress
 uint16_t cmps12_read_pitch_180_degress(int cmps12_file)
@@ -508,9 +468,8 @@ uint16_t cmps12_read_pitch_180_degress(int cmps12_file)
 
     pitch_180_degress = (high_byte << 8) | low_byte;
 
-    float pitch_to_degress = convert_to_180(pitch_180_degress);
 
-    return pitch_to_degress; 
+    return pitch_180_degress; 
 }
 
 SensorData cmps12_read_magnetometer_data(int cmps12_file)

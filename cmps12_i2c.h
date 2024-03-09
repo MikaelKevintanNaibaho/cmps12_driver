@@ -47,10 +47,6 @@
 
 #define I2C_SLAVE_FORCE 0x0706
 
-#define G_TO_MS2 9.8
-#define GYRO_LSB_PER_DPS 1/16
-#define TEMP_LSB_PER_DEGREE_C 1.0
-#define PITCH_LSB_PER_DEGREE_180 1.0
 
 typedef struct
 {
@@ -100,11 +96,6 @@ uint16_t cmps12_read_gyro_z_16_bit(int cmps12_file);
 uint16_t cmps12_temperature_16_bit(int cmps12_file);
 uint16_t cmps12_read_bearing_16_bit_BNO055(int cmps12_file);
 uint16_t cmps12_read_pitch_180_degress(int cmps12_file);
-
-//convert raw data to readable data
-float convert_to_ms2(uint16_t bit_raw);
-float convert_to_degress_per_second(uint16_t raw_data);
-float convert_to_celcius(uint16_t raw_data);
 
 
 //functions for combine xyz

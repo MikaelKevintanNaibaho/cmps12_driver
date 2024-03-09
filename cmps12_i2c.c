@@ -169,6 +169,12 @@ uint8_t cmps12_read_pitch_90_degress(int cmps12_file)
         fprintf(stderr, "failed to read pitch 90 degress\n");
         return 0;
     }
+
+    if(pitch_90_degress > 128){
+        pitch_90_degress = 0 - pitch_90_degress;
+    } else{
+        pitch_90_degress;
+    }
     
     return pitch_90_degress;
 }

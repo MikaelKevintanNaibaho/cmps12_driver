@@ -165,7 +165,7 @@ int8_t cmps12_convert_raw_to_degrees (uint8_t raw_data)
 
     int8_t max_tilt_degrees = 90;
 
-    int8_t resolution = max_tilt_degrees / MAX_TILT_RAW_VALUE;
+    int8_t resolution = max_tilt_degrees / (MAX_TILT_RAW_VALUE - 1);
 
     int8_t degrees = signed_value * resolution;
 

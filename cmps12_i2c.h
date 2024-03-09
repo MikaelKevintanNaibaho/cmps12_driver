@@ -47,8 +47,6 @@
 
 #define I2C_SLAVE_FORCE 0x0706
 
-#define MAX_TILT_RAW_VALUE 127 
-
 
 typedef struct
 {
@@ -60,8 +58,8 @@ typedef struct
 typedef struct
 {
     uint16_t bearing;
-    int8_t pitch;
-    int8_t roll;
+    uint8_t pitch;
+    uint8_t roll;
 } Orientation;
 
 typedef struct
@@ -82,12 +80,8 @@ int cmps12_init(const char *device);
 
 //compass feature function
 uint8_t cmps12_read_bearing_8_bit(int cmps12_file);
-
-int8_t cmps12_convert_raw_to_degrees (uint8_t raw_data);
-int8_t cmps12_read_pitch_90_degress(int cmps12_file);
-int8_t cmps12_read_roll_90_degress(int cmps12_file);
-
-
+uint8_t cmps12_read_pitch_90_degress(int cmps12_file);
+uint8_t cmps12_read_roll_90_degress(int cmps12_file);
 uint8_t cmps12_read_calibration_state(int cmps12_file);
 uint16_t cmps12_read_bearing_16_bit_quaternion(int cmps12_file);
 uint16_t cmps12_read_mag_x_16_bit(int cmps12_file);

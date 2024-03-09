@@ -81,7 +81,7 @@ int cmps12_write_register(int file, uint8_t register_addr, uint8_t data, ssize_t
     buffer[1] = data;
 
     //write buffer to device
-    if(write(file, buffer, sizeof(buffer)) != sizeof(buffer))
+    if(write(file, buffer, (ssize_t)sizeof(buffer)) != (ssize_t)sizeof(buffer))
     {
         perror("write to register failed");
         return -3;

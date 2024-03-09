@@ -167,12 +167,8 @@ uint8_t cmps12_read_pitch_90_degress(int cmps12_file)
         fprintf(stderr, "failed to read pitch 90 degress\n");
         return 0;
     }
-
-    //convert raw bit data into -90 to 90 degress
-    float pitch_degress = ((pitch_90_degress - 127) * 90.0) / 127.0;
-
-
-    return (uint16_t)pitch_degress;
+    
+    return pitch_90_degress;
 }
 
 uint8_t cmps12_read_roll_90_degress(int cmps12_file)
@@ -184,10 +180,7 @@ uint8_t cmps12_read_roll_90_degress(int cmps12_file)
         return 0;
     }
 
-    //convert raw bit data into +/-90 degress
-    float roll_degress = ((roll_90_degress -127) * 90.0) / 127.0;
-
-    return (uint16_t)roll_degress;
+    return roll_90_degress;
 }
 
 //read the magnetometer X axis

@@ -58,8 +58,8 @@ typedef struct
 typedef struct
 {
     uint16_t bearing;
-    uint8_t pitch;
-    uint8_t roll;
+    int8_t pitch;
+    int8_t roll;
 } Orientation;
 
 typedef struct

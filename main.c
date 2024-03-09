@@ -41,7 +41,7 @@ int main(void){
         printf("Magnetometer: X=%u, Y=%u, Z=%u\n", all_data.magnetometer.x, all_data.magnetometer.y, all_data.magnetometer.z);
         printf("Accelerometer: X=%u, Y=%u, Z=%u\n", all_data.accelerometer.x, all_data.accelerometer.y, all_data.accelerometer.z);
         printf("Gyroscope: X=%u, Y=%u, Z=%u\n", all_data.gyro.x, all_data.gyro.y, all_data.gyro.z);
-        printf("Orientation: Bearing=%u, Pitch=%u, Roll=%u\n", all_data.orientation.bearing, all_data.orientation.pitch, all_data.orientation.roll);
+        printf("Orientation: Bearing=%d, Pitch=%d, Roll=%u\n", all_data.orientation.bearing, all_data.orientation.pitch, all_data.orientation.roll);
 
         usleep(10000); //delay 1 second
 

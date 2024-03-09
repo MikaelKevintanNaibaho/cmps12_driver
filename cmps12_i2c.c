@@ -161,7 +161,7 @@ uint16_t cmps12_read_bearing_16_bit_quaternion(int cmps12_file)
 
 
 
-uint8_t cmps12_read_pitch_90_degress(int cmps12_file)
+int8_t cmps12_read_pitch_90_degress(int cmps12_file)
 {
     uint8_t pitch_90_degress;
 
@@ -170,16 +170,12 @@ uint8_t cmps12_read_pitch_90_degress(int cmps12_file)
         return 0;
     }
 
-    if(pitch_90_degress > 128){
-        pitch_90_degress = 0 - pitch_90_degress;
-    } else{
-        pitch_90_degress;
-    }
+    int8_t pitch_degrees= pitch_90_degress;
     
-    return pitch_90_degress;
+    return pitch_degrees;
 }
 
-uint8_t cmps12_read_roll_90_degress(int cmps12_file)
+int8_t cmps12_read_roll_90_degress(int cmps12_file)
 {
     uint8_t roll_90_degress;
 
@@ -188,7 +184,9 @@ uint8_t cmps12_read_roll_90_degress(int cmps12_file)
         return 0;
     }
 
-    return roll_90_degress;
+    int8_t roll_degrees = roll_90_degress;
+
+    return roll_degrees;
 }
 
 //read the magnetometer X axis

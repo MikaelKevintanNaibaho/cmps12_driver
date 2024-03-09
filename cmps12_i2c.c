@@ -161,7 +161,7 @@ uint16_t cmps12_read_bearing_16_bit_quaternion(int cmps12_file)
 
 
 
-int8_t cmps12_read_pitch_90_degress(int cmps12_file)
+uint8_t cmps12_read_pitch_90_degress(int cmps12_file)
 {
     uint8_t pitch_90_degress;
 

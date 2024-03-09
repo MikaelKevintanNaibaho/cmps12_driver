@@ -37,14 +37,11 @@ int main(void){
     while (1){
         AllSensorData all_data = cmps12_read_all_data(cmps12_file);
 
-        float pitch_degrees = raw_to_degrees(all_data.orientation.pitch);
-        float roll_degrees = raw_to_degrees(all_data.orientation.roll);
-
         // Print the data
         printf("Magnetometer: X=%u, Y=%u, Z=%u\n", all_data.magnetometer.x, all_data.magnetometer.y, all_data.magnetometer.z);
         printf("Accelerometer: X=%u, Y=%u, Z=%u\n", all_data.accelerometer.x, all_data.accelerometer.y, all_data.accelerometer.z);
         printf("Gyroscope: X=%u, Y=%u, Z=%u\n", all_data.gyro.x, all_data.gyro.y, all_data.gyro.z);
-        printf("Orientation: Bearing=%u, Pitch=%.2f, Roll=%.2f\n", all_data.orientation.bearing, pitch_degrees, roll_degrees);
+        printf("Orientation: Bearing=%u, Pitch=%u, Roll=%u\n", all_data.orientation.bearing, all_data.orientation.pitch, all_data.orientation.roll);
 
         usleep(10000); //delay 1 second
 

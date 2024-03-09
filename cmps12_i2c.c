@@ -170,7 +170,7 @@ int8_t cmps12_read_pitch_90_degress(int cmps12_file)
         return 0;
     }
 
-    int8_t pitch_degrees= pitch_90_degress;
+    int8_t pitch_degrees= (int8_t)pitch_90_degress;
 
     pitch_degrees = (pitch_degrees - 128) * 90 / 127;
     
@@ -186,7 +186,7 @@ int8_t cmps12_read_roll_90_degress(int cmps12_file)
         return 0;
     }
 
-    int8_t roll_degrees = roll_90_degress;
+    int8_t roll_degrees = (int8_t)roll_90_degress;
 
     roll_degrees = (roll_degrees - 128) * 90 / 127;
 

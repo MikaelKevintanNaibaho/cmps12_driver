@@ -54,7 +54,7 @@ format:
 	$(CLANG_FORMAT) -i $(SRC) $(wildcard *.h)
 
 cppcheck:
-	$(CPPCHECK) $(CPPCHECK_FLAGS)  $(SRC)
+	$(CPPCHECK) $(CPPCHECK_FLAGS)  $(SRC) $(wildcard *.h)
 
 clean:
 	rm -rf build

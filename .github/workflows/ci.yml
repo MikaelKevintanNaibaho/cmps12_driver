@@ -11,14 +11,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 20
-<<<<<<< HEAD
-=======
       - name: Format code with clang-format
         run: make format 
 
       - name: Run cppcheck
         run: make cppcheck --quiet
->>>>>>> 78844c9 (build(ci): GitHub action configuration and dockerfile)
 
       - name: Build the project (replace with your actual build command)
         run: make all

@@ -22,7 +22,7 @@ TARGET = $(BIN_DIR)/cmps12_reader
 
 # Formatting and Static Analysis tools
 CLANG_FORMAT = clang-format
-CPPCHECK = cppcheck
+CPPCHECK = /usr/bin/cppcheck
 
 .PHONY: all clean format check
 
@@ -44,7 +44,7 @@ format:
 	$(CLANG_FORMAT) -i $(SRC)
 
 cppcheck:
-	$(CPPCHECK) --enable=all $(SRC)
+	$(CPPCHECK) --enable=all --error-exitcode=1 $(SRC)
 
 clean:
 	rm -rf build

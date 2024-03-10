@@ -29,9 +29,9 @@ CPPCHECK_INCLUDES = ./
 CPPCHECK_FLAGS = \
 	--quiet --enable=all --error-exitcode=1 \
 	--inline-suppr \
-	--supress=missingIncludeSystem \
-	--supress=unmatchedSupression \
-	--supress=unusedFunction \
+	--suppress=missingIncludeSystem \
+	--suppress=unmatchedSuppression \
+	--suppress=unusedFunction \
 	$(addprefix -I,$(CPPCHECK_INCLUDES))
 
 .PHONY: all clean format check

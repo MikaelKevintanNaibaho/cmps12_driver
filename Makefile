@@ -51,7 +51,7 @@ $(BIN_DIR):
 	mkdir -p $(BIN_DIR)
 
 format:
-	$(CLANG_FORMAT) -i $(SRC)
+	$(CLANG_FORMAT) -i $(SRC) $(wildcard *.h)
 
 cppcheck:
 	$(CPPCHECK) $(CPPCHECK_FLAGS)  $(SRC)

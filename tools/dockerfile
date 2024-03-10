@@ -9,5 +9,8 @@ RUN DEBIAN_FRONTEND=noninteractive \
 RUN useradd -rm -d /home/ubuntu -s /bin/bash -g root -G sudo \
     -u 1001 ubuntu
 
+# Grant sudo privileges to the "ubuntu" user
+RUN echo 'ubuntu ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+
 USER ubuntu
 WORKDIR /home/ubuntu

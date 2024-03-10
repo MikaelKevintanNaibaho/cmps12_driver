@@ -22,7 +22,7 @@ TARGET = $(BIN_DIR)/cmps12_reader
 
 # Formatting and Static Analysis tools
 CLANG_FORMAT = clang-format
-CPPCHECK = /usr/bin/cppcheck
+CPPCHECK = cppcheck
 
 .PHONY: all clean format check
 

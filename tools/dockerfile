@@ -1,15 +1,13 @@
 FROM ubuntu:22.04
 
-#install necessary packages
+# Install necessary packages
 RUN DEBIAN_FRONTEND=noninteractive \
     apt-get update \
-    && apt-get install -y wget bzip2 make unzip cppcheck libc6-dev\
-    && rm -rf /var/lib/apt/lists/*
+    && apt-get install -y wget bzip2 make unzip cppcheck clang-format
 
-#create a non-root user name "ubuntu"
-#but put in root group since GitHub actions needs permissions
-#to create tmp files.
+# Create a non-root user named "ubuntu" with appropriate permissions
 RUN useradd -rm -d /home/ubuntu -s /bin/bash -g root -G sudo \
     -u 1001 ubuntu
+
 USER ubuntu
 WORKDIR /home/ubuntu

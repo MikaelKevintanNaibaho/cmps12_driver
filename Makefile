@@ -20,7 +20,11 @@ OBJ = $(patsubst %.c,$(OBJ_DIR)/%.o,$(SRC))
 # Executable name
 TARGET = $(BIN_DIR)/cmps12_reader
 
-.PHONY: all clean
+# Formatting and Static Analysis tools
+CLANG_FORMAT = clang-format
+CPPCHECK = cppcheck
+
+.PHONY: all clean format check
 
 all: $(TARGET)
 
@@ -35,6 +39,12 @@ $(OBJ_DIR):
 
 $(BIN_DIR):
 	mkdir -p $(BIN_DIR)
+
+format:
+	$(CLANG_FORMAT) -i $(SRC)
+
+check:
+	$(CPPCHECK) --enable=all $(SRC)
 
 clean:
 	rm -rf build

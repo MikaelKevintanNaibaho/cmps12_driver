@@ -43,7 +43,7 @@ $(BIN_DIR):
 format:
 	$(CLANG_FORMAT) -i $(SRC)
 
-check:
+cppcheck:
 	$(CPPCHECK) --enable=all $(SRC)
 
 clean:

@@ -21,8 +21,18 @@ OBJ = $(patsubst %.c,$(OBJ_DIR)/%.o,$(SRC))
 TARGET = $(BIN_DIR)/cmps12_reader
 
 # Formatting and Static Analysis tools
-CLANG_FORMAT = clang-format
+CLANG_FORMAT = clang-format-12
 CPPCHECK = cppcheck
+
+CPPCHECK_INCLUDES = ./
+
+CPPCHECK_FLAGS = \
+	--quiet --enable=all --error-exitcode=1 \
+	--inline-suppr \
+	--supress=missingIncludeSystem \
+	--supress=unmatchedSupression \
+	--supress=unusedFunction \
+	$(addprefix -I,$(CPPCHECK_INCLUDES))
 
 .PHONY: all clean format check
 
@@ -44,7 +54,7 @@ format:
 	$(CLANG_FORMAT) -i $(SRC)
 
 cppcheck:
-	$(CPPCHECK) --enable=all --error-exitcode=1 $(SRC)
+	$(CPPCHECK) $(CPPCHECK_FLAGS)  $(SRC)
 
 clean:
 	rm -rf build

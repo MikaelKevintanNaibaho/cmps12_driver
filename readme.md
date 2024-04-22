@@ -48,35 +48,66 @@ make cppcheck #untuk melakukan static analysis
 ```
 
 ## Functions
-**cmps12_open_i2c_device**
-```c
-int cmps12_open_i2c_device(const char *device);
-```
+
+#### Device Management
+
+* **int cmps12_open_i2c_device(const char *device)**
+    ```c
+    int cmps12_open_i2c_device(const char *device);
+    ```
+  * Opens the I2C device specified by `device` and initializes communication with the CMPS12 sensor.
+  * Returns file descriptor on success, or -1 on failure.
+* **int cmps12_release_i2c_device(int file)**
+    ```c
+    int cmps12_release_i2c_device(int file);
+    ```
+  * Closes the I2C device identified by the file descriptor `file`.
+  * Returns 0 on success, or -1 on failure.
 Open I2C device dispesifikasi oleh 'device' dan set menjadi I2C_SLAVE_FORCE Mode.
 
-**cmps12_release_i2c_device**
-```c
-int cmps12_release_i2c_device(int file);
-```
-untuk menutup I2C file decriptor
 
-**cmps12_read_register**
-```c
-int cmps12_read_register(int file, uint8_t register_addr,uint8_t *data, ssize_t data_size);
-```
-read data dari spesifik register address
+#### Register Access
 
-**cmps12_write_register**
-```c
-int cmps12_write_register(int file, uint8_t register_addr, uint8_t data, ssize_t data_size);
-```
-Write data ke spesifik register address
+* **int cmps12_read_register(int file, uint8_t register_addr, uint8_t *data, ssize_t data_size)**
+  * Reads data from a specific register on the CMPS12 sensor.
+  * Inputs:
+    * `file`: File descriptor of the open I2C device.
+    * `register_addr`: Address of the register to be read.
+    * `data`: Pointer to a buffer where the read data will be stored.
+    * `data_size`: Size (in bytes) of the data to be read.
+  * Returns 0 on success, or a negative value on failure (refer to documentation for specific error codes).
+* **int cmps12_write_register(int file, uint8_t register_addr, uint8_t data, ssize_t data_size)**
+  * Writes data to a specific register on the CMPS12 sensor.
+  * Inputs:
+    * `file`: File descriptor of the open I2C device.
+    * `register_addr`: Address of the register to be written to.
+    * `data`: Data to be written to the register.
+    * `data_size`: Size (in bytes) of the data to be written.
+  * Returns 0 on success, or a negative value on failure (refer to documentation for specific error codes).
 
-**cmps12_init**
-```c
-int cmps12_init(const char *device);
-```
-untuk meng-inisialisasi CMPS12 Compass Module dengan membuka I2C device
+#### Sensor Readings
+
+**Compass**
+
+* **uint8_t cmps12_read_bearing_8_bit(int cmps12_file)**
+  * Reads the 8-bit compass bearing data from the CMPS12 sensor and converts it to degrees (0-255).
+  * Returns the compass bearing in degrees on success, or 0 on failure.
+* **uint16_t cmps12_read_bearing_16_bit_quaternion(int cmps12_file)**
+  * Reads the 16-bit compass bearing data from the CMPS12 sensor (quaternion format) and converts it to degrees (0-359.9).
+  * Returns the compass bearing in degrees on success, or 0 on failure.
+* **uint16_t cmps12_read_bearing_16_bit_BNO055(int cmps12_file)**
+  * Reads the 16-bit compass bearing data from the BNO055 sensor (assuming it's connected to the CMPS12) and converts it to degrees (0-360).
+  * Returns the compass bearing in degrees on success, or 0 on failure.
+
+**Orientation**
+
+* **Orientation cmps12_read_orientation_quaternion(int cmps12_file)**
+  * Reads compass bearing, pitch, and roll data from the CMPS12 sensor (quaternion format) and stores them in an `Orientation` struct.
+  * Returns an `Orientation` struct containing sensor readings on success, or an empty struct on failure.
+* **Orientation cmps12_read_orientation_BNO055(int cmps12_file)**
+  * Reads compass bearing, pitch, and roll data from the BNO055 sensor (assuming it's connected to the CMPS12) and stores them in an `Orientation` struct.
+  * Returns an `Orientation` struct containing sensor readings on success, or an empty struct on failure.
+
 
 ## Data Structures
 library ini menggunakan data struktur sebagai berikut:
@@ -105,4 +136,8 @@ int main() {
     return 0;
 }
 ```
+
+## Author
+**MIKAEL KEVINTAN NAIBAHO**
+*mikaelkevintannaibaho@gmail.com*
 

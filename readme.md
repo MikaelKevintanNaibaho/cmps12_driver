@@ -48,31 +48,31 @@ make cppcheck #untuk melakukan static analysis
 ```
 
 ## Functions
-'cmps12_open_i2c_device'
+**cmps12_open_i2c_device**
 ```c
 int cmps12_open_i2c_device(const char *device);
 ```
 Open I2C device dispesifikasi oleh 'device' dan set menjadi I2C_SLAVE_FORCE Mode.
 
-'cmps12_release_i2c_device'
+**cmps12_release_i2c_device**
 ```c
 int cmps12_release_i2c_device(int file);
 ```
 untuk menutup I2C file decriptor
 
-'cmps12_read_register'
+**cmps12_read_register**
 ```c
 int cmps12_read_register(int file, uint8_t register_addr,uint8_t *data, ssize_t data_size);
 ```
 read data dari spesifik register address
 
-'cmps12_write_register'
+**cmps12_write_register**
 ```c
 int cmps12_write_register(int file, uint8_t register_addr, uint8_t data, ssize_t data_size);
 ```
 Write data ke spesifik register address
 
-'cmps12_init'
+**cmps12_init**
 ```c
 int cmps12_init(const char *device);
 ```

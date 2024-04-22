@@ -45,3 +45,64 @@ format source file dengan menggunakan 'clang-format' dan lakukan static analisis
 ```bash
 make format # format sorce file
 make cppcheck #untuk melakukan static analysis
+```
+
+## Functions
+'cmps12_open_i2c_device'
+```c
+int cmps12_open_i2c_device(const char *device);
+```
+Open I2C device dispesifikasi oleh 'device' dan set menjadi I2C_SLAVE_FORCE Mode.
+
+'cmps12_release_i2c_device'
+```c
+int cmps12_release_i2c_device(int file);
+```
+untuk menutup I2C file decriptor
+
+'cmps12_read_register'
+```c
+int cmps12_read_register(int file, uint8_t register_addr,uint8_t *data, ssize_t data_size);
+```
+read data dari spesifik register address
+
+'cmps12_write_register'
+```c
+int cmps12_write_register(int file, uint8_t register_addr, uint8_t data, ssize_t data_size);
+```
+Write data ke spesifik register address
+
+'cmps12_init'
+```c
+int cmps12_init(const char *device);
+```
+untuk meng-inisialisasi CMPS12 Compass Module dengan membuka I2C device
+
+## Data Structures
+library ini menggunakan data struktur sebagai berikut:
+
+- SensorData: Struktur berisikan sensor data untuk x,y,z komponen
+- Orientation: Struktur berisikan orientasi data (bearing, pith, roll).
+- AllSensorData: Struktur berisikan semua sensor data (magnetometer, acclerometer, gyro, dan orientasi)
+
+## Example Usage
+```c
+#include "cmps12_i2c.h"
+
+int main() {
+    int file = cmps12_init("/dev/i2c-1");
+    if (file < 0) {
+        fprintf(stderr, "Failed to initialize CMPS12 Compass Module\n");
+        return -1;
+    }
+
+    // Read sensor data
+    AllSensorData data = cmps12_read_all_data(file);
+
+    // Process sensor data...
+
+    cmps12_release_i2c_device(file);
+    return 0;
+}
+```
+
